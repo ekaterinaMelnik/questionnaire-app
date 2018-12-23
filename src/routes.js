@@ -3,11 +3,21 @@ import { UserLocation } from './components/UserLocation/UserLocation';
 
 const routes = [
   {
-    path: '/user-info',
+    path: '/',
+    exact: true,
     component: UserInfo
   },
   {
-    path: '/user-location',
+    path: '/location',
+    component: UserLocation
+  },
+  {
+    path: '/accounts',
+    exact: true,
+    component: UserInfo
+  },
+  {
+    path: '/verification',
     component: UserLocation
   }
 ];
