@@ -1,6 +1,6 @@
 import * as React from 'react';
-import BottomNavigation from '../BottomNavigation/BottomNavigation';
-import TopNavigation from '../TopNavigation/TopNavigation';
+import { BottomNavigation } from '../BottomNavigation/BottomNavigation';
+import { TopNavigation } from '../TopNavigation/TopNavigation';
 
 const MainWrapper = ({ children }) => (
   <React.Fragment>
