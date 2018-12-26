@@ -1,8 +1,8 @@
 import { LOAD_USER } from '../actions';
 
 const initialState = {
-  username: 'Katty',
-  email: 'melnykkatia@gmail.com'
+  username: '',
+  email: ''
 };
 
 const userInfo = (state = initialState, action) => {

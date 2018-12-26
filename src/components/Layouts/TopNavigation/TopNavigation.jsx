@@ -19,7 +19,6 @@ const TopNavigation = ({ classes, routes, location }) => (
         {routes.map((item, index) => (
           item.visible &&
           <CustomLink key={index} title={item.title} path={item.path}/>
-
         ))}
       </section>
     }

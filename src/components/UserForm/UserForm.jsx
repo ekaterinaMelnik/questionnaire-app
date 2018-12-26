@@ -153,8 +153,10 @@ class UserForm extends React.Component {
     return errors;
   };
 
-  handleSubmit = values => {
-    console.log('submit', values);
+  handleSubmit = (values, dispatch) => {
+    console.log('submit1', values);
+    console.log(dispatch);
+    // dispatch(loadUser(values));
   };
 
   render() {
@@ -167,7 +169,7 @@ class UserForm extends React.Component {
           <Typography className={classes.subTitle} variant="subtitle1" gutterBottom>
             1. Введите имя и e-mail.
           </Typography>
-          <Form onSubmit={this.handleSubmit}/>
+          <Form />
           {/*<Input*/}
           {/*id="name"*/}
           {/*name="name"*/}
@@ -202,10 +204,10 @@ class UserForm extends React.Component {
           {/*/>*/}
           {/*<span className={classes.errorText}>{errors.email}</span>*/}
           {/*</div>*/}
-          <BottomNavLinks
-            onClickNextPage={this.onClickNextPage}
-            nextPath="/location" nextTitle="Следующий"
-            prevPath="/" prevTitle="Предыдущий"/>
+          {/*<BottomNavLinks*/}
+          {/*onClickNextPage={this.onClickNextPage}*/}
+          {/*nextPath="/location" nextTitle="Следующий"*/}
+          {/*prevPath="/" prevTitle="Предыдущий"/>*/}
         </div>
       </section>
     );

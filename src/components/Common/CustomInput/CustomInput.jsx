@@ -23,6 +23,18 @@ const styles = theme => ({
     fontFamily: '"OpenSansRegular", sans-serif'
   },
 
+  customInputError: {
+    padding: '10px 18px',
+    maxWidth: 310,
+    height: 30,
+    border: '2px solid #ff0000',
+    borderRadius: 2,
+    backgroundColor: theme.palette.common.white,
+    boxShadow: '0px 1px 2px 0px rgba(0,0,0,0.2)',
+    fontSize: 15,
+    fontFamily: '"OpenSansRegular", sans-serif'
+  },
+
   errorText: {
     position: 'absolute',
     margin: '15px 0px 0px 10px',
@@ -40,10 +52,7 @@ const CustomInput = ({ input, type, placeholder, meta: { touched, error, warning
       {...input}
       placeholder={placeholder}
       disableUnderline={true}
-      classes={{
-        root: classes.customInputRoot,
-        input: classes.customInput
-      }}
+      classes={ error ? { root: classes.customInputRoot, input: classes.customInputError } : { root: classes.customInputRoot, input: classes.customInput }}
     />
     {touched &&
     ((error && <span className={classes.errorText}>{error}</span>) ||

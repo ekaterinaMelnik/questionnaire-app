@@ -42,32 +42,30 @@ const styles = theme => ({
 
 class Form extends React.Component {
   render() {
-    const { classes, handleSubmit, dispatch } = this.props;
+    const { classes, dispatch } = this.props;
 
     return (
       <div className={classes.textFieldContainer}>
-        <form onSubmit={handleSubmit}>
+        <form>
           <Field
             name="username"
             type="text"
             placeholder="Имя"
             component={Input}
+            onChange={(event) => {
+              dispatch(loadUser({ username: event.target.value }));
+            }}
           />
           <Field
             name="email"
             type="email"
             placeholder="Email"
             component={Input}
+            onChange={(event) => {
+              dispatch(loadUser({ email: event.target.value }));
+            }}
           />
         </form>
-        <button onClick={handleSubmit(data => {
-          console.log('handleSubmit', data);
-        })}>Submit</button>
-        <button onClick={() => {
-          dispatch(loadUser({ username: 'Katty1', email: '123@ukr.net' }));
-        }}>
-          LOAD
-        </button>
       </div>
     );
   }
@@ -80,9 +78,7 @@ const mapStateToProps = state => ({
 const FormRedux = reduxForm({
   form: 'userInfoValidation',
   enableReinitialize: true,
-  fields: ['username', 'email'],
   onSubmit: submitUserInfo,
-  onSubmitSuccess: (data) => {console.log('seccess', data)}
 })(Form);
 
 const FormConnect = withRouter(withStyles(styles)(connect(mapStateToProps)(FormRedux)));

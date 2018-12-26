@@ -1,9 +1,26 @@
 import * as React from 'react';
+import { loadUser } from '../../actions';
+import { withRouter } from 'react-router-dom';
+import connect from 'react-redux/es/connect/connect';
 
-const UserLocation = () => (
-  <div>
-    <div>User Location</div>
-  </div>
-);
+class UserLocation extends React.Component {
+  onClick = dispatch => {
+    dispatch(loadUser({ username: 'test', email: 'test@' }));
+  };
 
-export { UserLocation };
+  render() {
+    const { dispatch } = this.props;
+
+    return (
+      <div>
+        <button onClick={() => {
+          this.onClick(dispatch);
+        }}>
+          Click
+        </button>
+      </div>
+    );
+  }
+}
+
+export default withRouter(connect()(UserLocation));
