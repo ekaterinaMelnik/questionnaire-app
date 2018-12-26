@@ -111,7 +111,7 @@ class BottomNavigation extends React.Component {
   }
 
   onClick = (event, dispatch) => {
-    dispatch(submit('userInfoValidation'));
+    dispatch(submit('userInfo'));
   };
 
   render() {

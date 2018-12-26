@@ -3,8 +3,6 @@ import { SubmissionError } from 'redux-form';
 const submitUserInfo = (values, dispatch, props) => {
   const errors = {};
 
-  console.log('validation');
-
   if (!values.username) {
     errors.username = '— заполните поле';
   } else if (values.username.length > 14) {

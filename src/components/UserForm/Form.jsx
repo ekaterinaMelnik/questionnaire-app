@@ -3,7 +3,6 @@ import connect from 'react-redux/es/connect/connect';
 import { Field, reduxForm } from 'redux-form';
 import submitUserInfo from '../../core/submitionError';
 import { CustomInput as Input } from '../Common/CustomInput/CustomInput';
-import { loadUser } from '../../actions';
 import { withStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom';
 
@@ -42,7 +41,7 @@ const styles = theme => ({
 
 class Form extends React.Component {
   render() {
-    const { classes, dispatch } = this.props;
+    const { classes } = this.props;
 
     return (
       <div className={classes.textFieldContainer}>
@@ -52,18 +51,12 @@ class Form extends React.Component {
             type="text"
             placeholder="Имя"
             component={Input}
-            onChange={(event) => {
-              dispatch(loadUser({ username: event.target.value }));
-            }}
           />
           <Field
             name="email"
             type="email"
             placeholder="Email"
             component={Input}
-            onChange={(event) => {
-              dispatch(loadUser({ email: event.target.value }));
-            }}
           />
         </form>
       </div>
@@ -72,13 +65,13 @@ class Form extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  initialValues: state.userInfo
+  initialValues: state.form.userInfo.values
 });
 
 const FormRedux = reduxForm({
-  form: 'userInfoValidation',
-  enableReinitialize: true,
-  onSubmit: submitUserInfo,
+  form: 'userInfo',
+  destroyOnUnmount: false,
+  onSubmit: submitUserInfo
 })(Form);
 
 const FormConnect = withRouter(withStyles(styles)(connect(mapStateToProps)(FormRedux)));

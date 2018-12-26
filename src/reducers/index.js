@@ -1,12 +1,11 @@
 import { combineReducers } from 'redux';
 import routesPaths from './routesPaths';
-import { reducer as reduxFormReducer } from 'redux-form';
-import userInfo from './userInfo';
+import formPlugin from './userInfo';
+import { reducer as form } from 'redux-form';
 
 const rootReducer = combineReducers({
   routesPaths,
-  userInfo,
-  form: reduxFormReducer
+  form: form.plugin(formPlugin)
 });
 
 export default rootReducer;
