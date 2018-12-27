@@ -17,13 +17,13 @@ const styles = theme => ({
   },
 
   activeLink: {
-    color: 'black'
+    color: 'black !important'
   },
 
-  doneLink: {
+  ableLink: {
     marginRight: 8,
-    minWidth: 34,
-    minHeight: 34,
+    minWidth: 40,
+    minHeight: 40,
     borderRadius: 2,
     boxShadow: '0px 1px 2px 0px rgba(0,0,0,0.2)',
     color: '#ff9800',
@@ -33,8 +33,14 @@ const styles = theme => ({
   }
 });
 
-const CustomLink = ({ classes, path, title }) => (
-  <Button component={NavLink} className={classes.defaultLink} exact to={path} activeClassName={classes.activeLink}>
+const CustomLink = ({ classes, path, title, status }) => (
+  <Button
+    component={NavLink}
+    className={status === 'able' ? classes.ableLink : classes.defaultLink}
+    exact
+    disabled={status === 'disable'}
+    to={path}
+    activeClassName={classes.activeLink}>
     {title}
   </Button>
 );

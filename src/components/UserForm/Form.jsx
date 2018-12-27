@@ -1,7 +1,7 @@
 import * as React from 'react';
 import connect from 'react-redux/es/connect/connect';
 import { Field, reduxForm } from 'redux-form';
-import submitUserInfo from '../../core/submitionError';
+import { validateUserForm } from '../../core/validate';
 import { CustomInput as Input } from '../Common/CustomInput/CustomInput';
 import { withStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom';
@@ -65,13 +65,13 @@ class Form extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  initialValues: state.form.userInfo.values
+  initialValues: state.form.userForm.values
 });
 
 const FormRedux = reduxForm({
-  form: 'userInfo',
+  form: 'userForm',
   destroyOnUnmount: false,
-  onSubmit: submitUserInfo
+  onSubmit: validateUserForm
 })(Form);
 
 const FormConnect = withRouter(withStyles(styles)(connect(mapStateToProps)(FormRedux)));

@@ -18,7 +18,7 @@ const TopNavigation = ({ classes, routes, location }) => (
       <section className={classes.root}>
         {routes.map((item, index) => (
           item.visible &&
-          <CustomLink key={index} title={item.title} path={item.path}/>
+          <CustomLink key={index} title={item.title} path={item.path} status={item.status}/>
         ))}
       </section>
     }
@@ -26,7 +26,7 @@ const TopNavigation = ({ classes, routes, location }) => (
 );
 
 const mapStateToProps = (state) => ({
-  routes: state.routesPaths.routes
+  routes: state.routesPaths
 });
 
 const TopNavigationStyles = withStyles(styles)(TopNavigation);

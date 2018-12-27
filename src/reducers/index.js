@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import routesPaths from './routesPaths';
-import formPlugin from './userInfo';
+import formPlugin from './forms';
 import { reducer as form } from 'redux-form';
 
 const rootReducer = combineReducers({

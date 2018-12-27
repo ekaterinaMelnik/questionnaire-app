@@ -74,17 +74,12 @@ const config = {
       {
         test: /\.(ico)$/,
         loader: 'file-loader?name=[name].[ext]'
-      },
-      {
-        test: /\.json$/,
-        loader: 'json-loader',
-        include: path.join(src)
       }
     ]
   },
   resolve: {
     alias: WebpackAliases,
-    extensions: ['.js', '.jsx', '.json']
+    extensions: ['.js', '.jsx']
   },
   plugins: [
     new MinifyPlugin(),
@@ -105,10 +100,6 @@ const config = {
     }),
     new UglifyJsPlugin({
       sourceMap: true
-    }),
-    new webpack.DefinePlugin({
-      DEV: JSON.stringify(false),
-      PROD: JSON.stringify(true)
     })
   ]
 };

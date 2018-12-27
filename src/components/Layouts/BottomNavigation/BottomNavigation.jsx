@@ -110,8 +110,14 @@ class BottomNavigation extends React.Component {
     return null;
   }
 
-  onClick = (event, dispatch) => {
-    dispatch(submit('userInfo'));
+  onClick = (event, dispatch, location) => {
+    if (location.pathname === '/') {
+      dispatch(submit('userForm'));
+    }
+
+    if (location.pathname === '/location') {
+      dispatch(submit('userLocation'));
+    }
   };
 
   render() {
@@ -129,7 +135,7 @@ class BottomNavigation extends React.Component {
                 </div>
               </Button>
               <Button
-                onClick={(event) => this.onClick(event, dispatch)}
+                onClick={(event) => this.onClick(event, dispatch, location)}
                 className={classes.defaultLink}>
                 <div className={classes.containerLink}>
                   <span className={classes.textLink}>{nextPage.title}</span>
@@ -149,7 +155,7 @@ class BottomNavigation extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  routes: state.routesPaths.routes,
+  routes: state.routesPaths,
   form: state.form
 });
 

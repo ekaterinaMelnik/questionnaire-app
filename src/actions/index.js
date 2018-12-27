@@ -5,9 +5,9 @@ export const setPath = pathname => ({
   pathname
 });
 
-export const LOAD_USER = 'LOAD_USER';
+export const CHANGE_LINK_STATUS = 'CHANGE_LINK_STATUS';
 
-export const loadUser = data => ({
-  type: LOAD_USER,
-  data
+export const changeLinkStatus = (index) => ({
+  type: CHANGE_LINK_STATUS,
+  index
 });

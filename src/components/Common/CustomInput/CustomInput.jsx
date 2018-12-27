@@ -35,14 +35,23 @@ const styles = theme => ({
     fontFamily: '"OpenSansRegular", sans-serif'
   },
 
+  errorContainer: {
+    position: 'relative'
+  },
+
   errorText: {
-    position: 'absolute',
     margin: '15px 0px 0px 10px',
     width: '100%',
     fontSize: 15,
     fontFamily: '"OpenSansRegular", sans-serif',
     fontWeight: '600',
-    color: '#ff0000'
+    color: '#ff0000',
+
+    [theme.breakpoints.up('md')]: {
+      position: 'absolute',
+      left: 325,
+      bottom: 17
+    }
   }
 });
 
@@ -54,9 +63,11 @@ const CustomInput = ({ input, type, placeholder, meta: { touched, error, warning
       disableUnderline={true}
       classes={ error ? { root: classes.customInputRoot, input: classes.customInputError } : { root: classes.customInputRoot, input: classes.customInput }}
     />
-    {touched &&
-    ((error && <span className={classes.errorText}>{error}</span>) ||
-      (warning && <span>{warning}</span>))}
+    <div className={classes.errorContainer}>
+      {touched &&
+      ((error && <span className={classes.errorText}>{error}</span>) ||
+        (warning && <span>{warning}</span>))}
+    </div>
   </div>
 );
 
