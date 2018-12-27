@@ -6,6 +6,7 @@ import ChevronRight from '@material-ui/icons/ChevronRight';
 import { withStyles } from '@material-ui/core/styles';
 import connect from 'react-redux/es/connect/connect';
 import { submit } from 'redux-form';
+import { validateImg } from '../../../actions';
 
 const styles = theme => ({
   root: {
@@ -34,7 +35,7 @@ const styles = theme => ({
 
       '&:first-child': {
         marginRight: 10
-      },
+      }
     }
   },
 
@@ -118,7 +119,7 @@ class BottomNavigation extends React.Component {
     return null;
   }
 
-  onClick = (event, dispatch, location) => {
+  onClick = (event, dispatch, location, history, checkedImage) => {
     if (location.pathname === '/') {
       dispatch(submit('userForm'));
     }
@@ -130,16 +131,24 @@ class BottomNavigation extends React.Component {
     if (location.pathname === '/accounts') {
       dispatch(submit('userAccounts'));
     }
+
+    if (location.pathname === '/verification') {
+      if (checkedImage.type === 'cat') {
+        history.push('/info');
+      } else {
+        dispatch(validateImg());
+      }
+    }
   };
 
   render() {
-    const { classes, location, dispatch } = this.props;
+    const { classes, location, dispatch, checkedImage, history } = this.props;
     const { previousPage, nextPage } = this.state;
     return (
       <React.Fragment>
         {
-          location.pathname !== '/info' ?
-            <section className={classes.root}>
+          location.pathname !== '/info'
+            ? <section className={classes.root}>
               <Button component={NavLink} className={classes.defaultLink} exact to={previousPage.path}>
                 <div className={classes.container}>
                   <ChevronLeft className={classes.icon}/>
@@ -147,15 +156,15 @@ class BottomNavigation extends React.Component {
                 </div>
               </Button>
               <Button
-                onClick={(event) => this.onClick(event, dispatch, location)}
+                onClick={(event) => this.onClick(event, dispatch, location, history, checkedImage)}
                 className={classes.defaultLink}>
                 <div className={classes.containerLink}>
                   <span className={classes.textLink}>{nextPage.title}</span>
                   <ChevronRight className={classes.icon}/>
                 </div>
               </Button>
-            </section> :
-            <section className={classes.root}>
+            </section>
+            : <section className={classes.root}>
               <Button component={NavLink} className={classes.finishLink} exact to="/">
                 Пройти заново
               </Button>
@@ -168,7 +177,8 @@ class BottomNavigation extends React.Component {
 
 const mapStateToProps = (state) => ({
   routes: state.routesPaths,
-  form: state.form
+  form: state.form,
+  checkedImage: state.imagesPaths.checkedImage
 });
 
 const BottomNavigationStyles = withStyles(styles)(BottomNavigation);

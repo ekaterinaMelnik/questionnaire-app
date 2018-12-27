@@ -42,13 +42,10 @@ const routesPaths = (state = initialState, action) => {
             ...page,
             status: 'able'
           }
-          :
-          action.index + 1 === index ?
-            {
-              ...page,
-              status: 'active'
-            }
-            : page
+          : action.index + 1 === index ? {
+            ...page,
+            status: 'active'
+          } : page
       );
     default:
       return state;

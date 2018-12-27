@@ -4,12 +4,16 @@ import { withRouter } from 'react-router-dom';
 import CustomLink from '../../Common/CustomLink/CustomLink';
 import { withStyles } from '@material-ui/core/styles';
 
-const styles = {
+const styles = theme => ({
   root: {
     margin: '0 auto',
-    maxWidth: 310
+    width: 310,
+
+    [theme.breakpoints.down('xs')]: {
+      width: '100%'
+    }
   }
-};
+});
 
 const TopNavigation = ({ classes, routes, location }) => (
   <React.Fragment>

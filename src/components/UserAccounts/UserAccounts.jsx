@@ -3,9 +3,9 @@ import Typography from '@material-ui/core/Typography/Typography';
 import { Form } from './AccountsForm';
 import { withStyles } from '@material-ui/core/styles';
 
-const styles = theme => ({
+const styles = {
   root: {
-    margin: '16px 0px 150px 0px'
+    margin: '16px 0px 85px 0px'
   },
 
   container: {
@@ -18,10 +18,9 @@ const styles = theme => ({
     fontSize: 15,
     fontFamily: '"OpenSansRegular", sans-serif'
   }
-});
+};
 
 class UserAccounts extends React.Component {
-
   render() {
     const { classes } = this.props;
 
@@ -31,7 +30,7 @@ class UserAccounts extends React.Component {
           <Typography className={classes.subTitle} variant="subtitle1" gutterBottom>
             3. Отметьте социальные сети.
           </Typography>
-          <Form />
+          <Form/>
         </div>
       </section>
     );

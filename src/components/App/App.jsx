@@ -8,18 +8,32 @@ import '../../styles/_main.scss';
 
 const styles = theme => ({
   root: {
-    marginTop: 170,
-    [theme.breakpoints.down('md')]: {
-      marginTop: 50
-    }
+    // marginTop: 100,
+    // [theme.breakpoints.down('md')]: {
+    //   marginTop: 50
+    // }
+    width: '100%',
+    minHeight: 'calc(100vh - 40px)',
+    display: 'flex',
+    flexGrow: 1,
+    maxWidth: '100vw'
+  },
+
+  container: {
+    margin: 'auto',
+    maxWidth: 650,
+    display: 'flex',
+    flexDirection: 'column'
   }
 });
 
 const App = ({ classes }) => (
   <div className={classes.root}>
-    <MainWrapper>
-      <Switch>{routesMapper(routes)}</Switch>
-    </MainWrapper>
+    <div className={classes.container}>
+      <MainWrapper>
+        <Switch>{routesMapper(routes)}</Switch>
+      </MainWrapper>
+    </div>
   </div>
 
 );
