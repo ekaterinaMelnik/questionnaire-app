@@ -4,8 +4,6 @@ import { changeLinkStatus } from '../actions';
 export const validateUserForm = (values, dispatch, props) => {
   const errors = {};
 
-  console.log('validateUserForm', values);
-
   if (!values.username) {
     errors.username = '— заполните поле';
   } else if (values.username.length > 14) {
@@ -33,8 +31,6 @@ export const validateUserForm = (values, dispatch, props) => {
 export const validateUserLocation = (values, dispatch, props) => {
   const errors = {};
 
-  console.log('validateUserLocation', values);
-
   if (!values.country) {
     errors.country = '— заполните поле';
   }
@@ -50,5 +46,26 @@ export const validateUserLocation = (values, dispatch, props) => {
   } else {
     dispatch(changeLinkStatus(1));
     props.history.push('/accounts');
+  }
+};
+
+export const validateUserAccounts = (values, dispatch, props) => {
+  const errors = {};
+  const accounts = ['facebook', 'vkontakte', 'twitter', 'odnoklassniki'];
+
+  accounts.map((account) => {
+    if (values[`checkbox_${account}`] && !values[account]) {
+      errors[account] = '— заполните поле';
+    }
+  });
+
+  if (Object.keys(errors).length) {
+    throw new SubmissionError({
+      ...errors,
+      _error: 'UserAccounts submit failed!'
+    });
+  } else {
+    dispatch(changeLinkStatus(2));
+    props.history.push('/verification');
   }
 };

@@ -10,7 +10,7 @@ const styles = theme => ({
 
   container: {
     margin: '0 auto',
-    width: 310
+    maxWidth: 310
   },
 
   subTitle: {

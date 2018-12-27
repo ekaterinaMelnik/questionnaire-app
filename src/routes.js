@@ -1,6 +1,6 @@
 import { UserInfo } from './components/UserInfo/UserInfo';
 import UserLocation from './components/UserLocation/UserLocation';
-import { UserAccounts } from './components/UserAccounts/UserAccounts';
+import UserAccounts from './components/UserAccounts/UserAccounts';
 import { UserVerification } from './components/UserVerification/UserVerification';
 import UserForm from './components/UserForm/UserForm';
 

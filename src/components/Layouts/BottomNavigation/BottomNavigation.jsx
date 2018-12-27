@@ -9,6 +9,7 @@ import { submit } from 'redux-form';
 
 const styles = theme => ({
   root: {
+    display: 'flex',
     margin: '0 auto',
     maxWidth: 310
   },
@@ -27,6 +28,13 @@ const styles = theme => ({
 
     '&:first-child': {
       marginRight: 16
+    },
+
+    [theme.breakpoints.down('xs')]: {
+
+      '&:first-child': {
+        marginRight: 10
+      },
     }
   },
 
@@ -117,6 +125,10 @@ class BottomNavigation extends React.Component {
 
     if (location.pathname === '/location') {
       dispatch(submit('userLocation'));
+    }
+
+    if (location.pathname === '/accounts') {
+      dispatch(submit('userAccounts'));
     }
   };
 
