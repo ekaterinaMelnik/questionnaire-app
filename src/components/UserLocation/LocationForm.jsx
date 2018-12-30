@@ -41,6 +41,8 @@ const styles = theme => ({
 });
 
 class LocationForm extends React.Component {
+  _isMounted = false;
+
   state = {
     countries: {},
     cities: {},
@@ -53,17 +55,33 @@ class LocationForm extends React.Component {
   };
 
   componentDidMount() {
+    this._isMounted = true;
+
     axios.get('/data/countries.json')
       .then(response => response.data)
-      .then(countries => this.setState({ countries }))
+      .then(countries => {
+        if (this._isMounted) {
+          this.setState({ countries });
+        }
+      })
       .then(() => {
         axios.get('/data/cities.json')
           .then(response => response.data)
-          .then(cities => this.setState({ cities }))
+          .then(cities => {
+            if (this._isMounted) {
+              this.setState({ cities });
+            }
+          })
           .then(() => {
-            this.createData(this.state.countries, this.state.cities);
+            if (this._isMounted) {
+              this.createData(this.state.countries, this.state.cities);
+            }
           });
       });
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   createData = (countries, cities) => {
@@ -108,6 +126,8 @@ class LocationForm extends React.Component {
   onChangeCountry = (country, dispatch) => {
     dispatch(change('userLocation', 'city', ''));
 
+    console.log('country', country);
+
     this.setState({
       activeCities: country ? country.cities : []
     });
@@ -116,7 +136,7 @@ class LocationForm extends React.Component {
   onChangeCity = () => {};
 
   render() {
-    const { classes, dispatch } = this.props;
+    const { classes, dispatch, initialValues } = this.props;
     const { activeCountries, activeCities } = this.state;
 
     return (

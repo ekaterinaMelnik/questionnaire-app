@@ -103,11 +103,12 @@ const CustomSelect = ({ input: { value, onChange, onBlur }, dispatchFunc, onChan
           onChangeValue(option, dispatchFunc);
           onChange(option);
         }}
-        onBlur={() => onBlur(value)}
+        onBlur={event => event.preventDefault()}
         options={options}
         placeholder={placeholder}
         styles={customStyles}
         isClearable={true}
+        isSearchable={true}
       />
     </div>
     <div className={classes.errorContainer}>

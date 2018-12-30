@@ -21,15 +21,25 @@ const styles = theme => ({
   }
 });
 
-const UserForm = ({ classes }) => (
-  <section className={classes.root}>
-    <div className={classes.container}>
-      <Typography className={classes.subTitle} variant="subtitle1" gutterBottom>
-        1. Введите имя и e-mail.
-      </Typography>
-      <Form/>
-    </div>
-  </section>
-);
+class UserForm extends React.Component {
+  handleSubmit = () => {
+    console.log('handleSubmit');
+  };
+
+  render() {
+    const { classes } = this.props;
+
+    return (
+      <section className={classes.root}>
+        <div className={classes.container}>
+          <Typography className={classes.subTitle} variant="subtitle1" gutterBottom>
+            1. Введите имя и e-mail.
+          </Typography>
+          <Form />
+        </div>
+      </section>
+    );
+  }
+}
 
 export default withStyles(styles)(UserForm);

@@ -1,17 +1,15 @@
 import * as React from 'react';
-import { Switch } from 'react-router-dom';
+import { Switch, withRouter, Redirect, Route } from 'react-router-dom';
 import routes from '../../routes.js';
 import { MainWrapper } from '../Layouts/MainWrapper/MainWrapper';
 import { routesMapper } from '../../core/Utils';
 import { withStyles } from '@material-ui/core/styles';
 import '../../styles/_main.scss';
+import UserLocation from '../../components/UserLocation/UserLocation';
+import UserForm from '../../components/UserForm/UserForm';
 
-const styles = theme => ({
+const styles = {
   root: {
-    // marginTop: 100,
-    // [theme.breakpoints.down('md')]: {
-    //   marginTop: 50
-    // }
     width: '100%',
     minHeight: 'calc(100vh - 40px)',
     display: 'flex',
@@ -25,17 +23,34 @@ const styles = theme => ({
     display: 'flex',
     flexDirection: 'column'
   }
-});
+};
 
-const App = ({ classes }) => (
-  <div className={classes.root}>
-    <div className={classes.container}>
-      <MainWrapper>
-        <Switch>{routesMapper(routes)}</Switch>
-      </MainWrapper>
-    </div>
-  </div>
+class App extends React.Component {
+  componentDidMount() {
+    const { match, location, history } = this.props;
+    const allowRedirect = match.url !== location.pathname;
 
-);
+    if (allowRedirect) {
+      history.replace('/');
+    }
+  }
 
-export default withStyles(styles)(App);
+  render() {
+    const { classes } = this.props;
+
+    return (
+      <div className={classes.root}>
+        <div className={classes.container}>
+          <MainWrapper>
+            <Switch>
+              {routesMapper(routes)}
+              <Redirect to="/"/>
+            </Switch>
+          </MainWrapper>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default withRouter(withStyles(styles)(App));

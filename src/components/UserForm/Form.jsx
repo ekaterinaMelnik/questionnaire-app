@@ -1,6 +1,6 @@
 import * as React from 'react';
 import connect from 'react-redux/es/connect/connect';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, hasSubmitSucceeded, hasSubmitFailed, isValid } from 'redux-form';
 import { validateUserForm } from '../../core/validate';
 import { CustomInput as Input } from '../Common/CustomInput/CustomInput';
 import { withStyles } from '@material-ui/core/styles';
@@ -41,7 +41,12 @@ const styles = theme => ({
 
 class Form extends React.Component {
   render() {
-    const { classes } = this.props;
+    const { classes, userForm, submitSucceeded, submitFailed, valid } = this.props;
+
+    // console.log('userForm', userForm);
+    // console.log('submitSucceeded', submitSucceeded);
+    // console.log('submitFailed', submitFailed);
+    // console.log('valid', valid);
 
     return (
       <div className={classes.textFieldContainer}>
@@ -65,8 +70,17 @@ class Form extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  initialValues: state.form.userForm.values
+  initialValues: state.form.userForm.values,
+  userForm: state.form.userForm,
+
+  submitSucceeded: hasSubmitSucceeded('userForm')(state),
+  submitFailed: hasSubmitFailed('userForm')(state),
+  valid: isValid('userForm')(state)
 });
+
+// const mapDispatchToProps = (dispatch, ownProps) => ({
+// //   onClick: () => dispatch(setVisibilityFilter(ownProps.filter))
+// // });
 
 const FormRedux = reduxForm({
   form: 'userForm',

@@ -43,6 +43,15 @@ const styles = theme => ({
     fontSize: 15,
     fontFamily: '"OpenSansRegular", sans-serif',
     color: '#ff0000'
+  },
+
+  img: {
+    width: 150,
+    height: 150,
+    display: 'block',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center'
   }
 });
 
@@ -77,7 +86,7 @@ class VerificationForm extends React.Component {
         </Grid>
 
         <Typography className={classes.subTitle} variant="subtitle1" gutterBottom>
-          {validationError && 'Вы выбрали собачку. А надо котика.'}
+          {validationError && validationError}
         </Typography>
       </div>
     );
@@ -87,7 +96,7 @@ class VerificationForm extends React.Component {
 const mapStateToProps = state => ({
   imagesPaths: state.imagesPaths.images,
   validationError: state.imagesPaths.validationError,
-  checkedImage: state.imagesPaths.checkedImage
+  checkedImage: state.imagesPaths.checkedImage,
 });
 
 const FormConnect = withRouter(withStyles(styles)(connect(mapStateToProps)(VerificationForm)));

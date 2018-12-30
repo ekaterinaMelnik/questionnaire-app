@@ -1,4 +1,4 @@
-import { CHECK_IMG, VALIDATE_IMG } from '../actions';
+import { CHECK_IMG, CLEAR_USER_IMAGE, VALIDATE_IMG } from '../actions';
 
 const initialState = {
   images: [
@@ -24,7 +24,7 @@ const initialState = {
     }
   ],
   checkedImage: {},
-  validationError: false
+  validationError: ''
 };
 
 const imagesPaths = (state = initialState, action) => {
@@ -33,12 +33,23 @@ const imagesPaths = (state = initialState, action) => {
       return {
         ...state,
         checkedImage: action.checkedImage,
-        validationError: false
+        validationError: ''
       };
     case VALIDATE_IMG:
+      return !action.imgType
+        ? {
+          ...state,
+          validationError: 'Выберите картинку.'
+        }
+        : {
+          ...state,
+          validationError: 'Вы выбрали собачку. А надо котика.'
+        };
+    case CLEAR_USER_IMAGE:
       return {
         ...state,
-        validationError: true
+        checkedImage: {},
+        validationError: ''
       };
     default:
       return state;

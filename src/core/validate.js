@@ -1,14 +1,33 @@
 import { SubmissionError } from 'redux-form';
-import { changeLinkStatus } from '../actions';
+import { changeLinkStatusForward, changeLinkStatusBack } from '../actions';
+
+const getRouteInfo = (currentPage) => {
+  const routes = ['/', '/location', '/accounts', '/verification'];
+  const nextPage = localStorage.getItem('nextPage');
+
+  const currentPageIndex = routes.indexOf(currentPage);
+  const nextPageIndex = routes.indexOf(nextPage);
+
+  localStorage.clear();
+
+  return {
+    currentPageIndex,
+    nextPageIndex,
+    nextPage,
+    direction: currentPageIndex - nextPageIndex
+  };
+};
 
 export const validateUserForm = (values, dispatch, props) => {
   const errors = {};
+  const routeInfo = getRouteInfo(props.location.pathname);
+
+  console.log('props', props);
 
   if (!values.username) {
     errors.username = '— заполните поле';
-  } else if (values.username.length > 14) {
-    errors.username = '— имя должно быть меньше 15 символов';
   }
+
   if (!values.email) {
     errors.email = '— заполните поле';
   } else if (values.email.indexOf('@') === -1) {
@@ -17,19 +36,32 @@ export const validateUserForm = (values, dispatch, props) => {
     errors.email = '— некорректный e-mail';
   }
 
-  if (Object.keys(errors).length) {
+  console.log('nextPage', routeInfo.currentPageIndex);
+
+  console.log('nextPage', routeInfo.nextPage);
+  console.log('nextPage', routeInfo.nextPageIndex);
+
+  if (routeInfo.direction > 0) {
+    if (Object.keys(errors).length) {
+      dispatch(changeLinkStatusBack(routeInfo.currentPageIndex, routeInfo.nextPageIndex, true));
+    } else {
+      dispatch(changeLinkStatusBack(routeInfo.currentPageIndex, routeInfo.nextPageIndex));
+    }
+    props.history.push(routeInfo.nextPage);
+  } else if (Object.keys(errors).length) {
     throw new SubmissionError({
       ...errors,
       _error: 'UserForm submit failed!'
     });
   } else {
-    dispatch(changeLinkStatus(0));
-    props.history.push('/location');
+    props.history.push(routeInfo.nextPage);
+    dispatch(changeLinkStatusForward(routeInfo.currentPageIndex));
   }
 };
 
 export const validateUserLocation = (values, dispatch, props) => {
   const errors = {};
+  const routeInfo = getRouteInfo(props.location.pathname);
 
   if (!values.country) {
     errors.country = '— заполните поле';
@@ -38,20 +70,33 @@ export const validateUserLocation = (values, dispatch, props) => {
     errors.city = '— заполните поле';
   }
 
-  if (Object.keys(errors).length) {
+  console.log('nextPage', routeInfo.currentPageIndex);
+
+  console.log('nextPage', routeInfo.nextPage);
+  console.log('nextPage', routeInfo.nextPageIndex);
+
+  if (routeInfo.direction > 0) {
+    if (Object.keys(errors).length) {
+      dispatch(changeLinkStatusBack(routeInfo.currentPageIndex, routeInfo.nextPageIndex, true));
+    } else {
+      dispatch(changeLinkStatusBack(routeInfo.currentPageIndex, routeInfo.nextPageIndex));
+    }
+    props.history.push(routeInfo.nextPage);
+  } else if (Object.keys(errors).length) {
     throw new SubmissionError({
       ...errors,
       _error: 'UserLocation submit failed!'
     });
   } else {
-    dispatch(changeLinkStatus(1));
-    props.history.push('/accounts');
+    props.history.push(routeInfo.nextPage);
+    dispatch(changeLinkStatusForward(routeInfo.currentPageIndex));
   }
 };
 
 export const validateUserAccounts = (values, dispatch, props) => {
   const errors = {};
   const accounts = ['facebook', 'vkontakte', 'twitter', 'odnoklassniki'];
+  const routeInfo = getRouteInfo(props.location.pathname);
 
   accounts.map((account) => {
     if (values[`checkbox_${account}`] && !values[account]) {
@@ -59,13 +104,25 @@ export const validateUserAccounts = (values, dispatch, props) => {
     }
   });
 
-  if (Object.keys(errors).length) {
+  console.log('nextPage', routeInfo.currentPageIndex);
+
+  console.log('nextPage', routeInfo.nextPage);
+  console.log('nextPage', routeInfo.nextPageIndex);
+
+  if (routeInfo.direction > 0) {
+    if (Object.keys(errors).length) {
+      dispatch(changeLinkStatusBack(routeInfo.currentPageIndex, routeInfo.nextPageIndex, true));
+    } else {
+      dispatch(changeLinkStatusBack(routeInfo.currentPageIndex, routeInfo.nextPageIndex));
+    }
+    props.history.push(routeInfo.nextPage);
+  } else if (Object.keys(errors).length) {
     throw new SubmissionError({
       ...errors,
       _error: 'UserAccounts submit failed!'
     });
   } else {
-    dispatch(changeLinkStatus(2));
-    props.history.push('/verification');
+    props.history.push(routeInfo.nextPage);
+    dispatch(changeLinkStatusForward(routeInfo.currentPageIndex));
   }
 };
