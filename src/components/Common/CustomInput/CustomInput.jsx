@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Input from '@material-ui/core/Input/Input';
+
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
@@ -102,8 +103,14 @@ const styles = theme => ({
 });
 
 const CustomInput = ({ input, type, placeholder, meta: { touched, error, warning }, classes, smallInput }) => {
-  const defaultClassName = smallInput ? { root: classes.customInputRoot, input: classes.customSmallInput } : { root: classes.customInputRoot, input: classes.customInput };
-  const errorClassName = smallInput ? { root: classes.customInputRoot, input: classes.customSmallInputError } : { root: classes.customInputRoot, input: classes.customInputError };
+  const defaultClassName = smallInput ? {
+    root: classes.customInputRoot,
+    input: classes.customSmallInput
+  } : { root: classes.customInputRoot, input: classes.customInput };
+  const errorClassName = smallInput ? {
+    root: classes.customInputRoot,
+    input: classes.customSmallInputError
+  } : { root: classes.customInputRoot, input: classes.customInputError };
   const errorTextClassName = smallInput ? classes.errorSmallText : classes.errorText;
 
   return (

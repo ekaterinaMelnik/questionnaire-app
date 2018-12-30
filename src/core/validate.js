@@ -22,8 +22,6 @@ export const validateUserForm = (values, dispatch, props) => {
   const errors = {};
   const routeInfo = getRouteInfo(props.location.pathname);
 
-  console.log('props', props);
-
   if (!values.username) {
     errors.username = '— заполните поле';
   }
@@ -35,11 +33,6 @@ export const validateUserForm = (values, dispatch, props) => {
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
     errors.email = '— некорректный e-mail';
   }
-
-  console.log('nextPage', routeInfo.currentPageIndex);
-
-  console.log('nextPage', routeInfo.nextPage);
-  console.log('nextPage', routeInfo.nextPageIndex);
 
   if (routeInfo.direction > 0) {
     if (Object.keys(errors).length) {
@@ -70,11 +63,6 @@ export const validateUserLocation = (values, dispatch, props) => {
     errors.city = '— заполните поле';
   }
 
-  console.log('nextPage', routeInfo.currentPageIndex);
-
-  console.log('nextPage', routeInfo.nextPage);
-  console.log('nextPage', routeInfo.nextPageIndex);
-
   if (routeInfo.direction > 0) {
     if (Object.keys(errors).length) {
       dispatch(changeLinkStatusBack(routeInfo.currentPageIndex, routeInfo.nextPageIndex, true));
@@ -103,11 +91,6 @@ export const validateUserAccounts = (values, dispatch, props) => {
       errors[account] = '— заполните поле';
     }
   });
-
-  console.log('nextPage', routeInfo.currentPageIndex);
-
-  console.log('nextPage', routeInfo.nextPage);
-  console.log('nextPage', routeInfo.nextPageIndex);
 
   if (routeInfo.direction > 0) {
     if (Object.keys(errors).length) {

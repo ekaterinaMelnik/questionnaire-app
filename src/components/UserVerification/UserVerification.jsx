@@ -1,6 +1,8 @@
 import * as React from 'react';
+
 import Typography from '@material-ui/core/Typography/Typography';
 import { Form } from './VerificationForm';
+
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = {
@@ -20,22 +22,15 @@ const styles = {
   }
 };
 
-class UserVerification extends React.Component {
-
-  render() {
-    const { classes } = this.props;
-
-    return (
-      <section className={classes.root}>
-        <div className={classes.container}>
-          <Typography className={classes.subTitle} variant="subtitle1" gutterBottom>
-            4. Выберите любимого котика.
-          </Typography>
-        </div>
-        <Form/>
-      </section>
-    );
-  }
-}
+const UserVerification = ({ classes }) => (
+  <section className={classes.root}>
+    <div className={classes.container}>
+      <Typography className={classes.subTitle} variant="subtitle1" gutterBottom>
+        4. Выберите любимого котика.
+      </Typography>
+    </div>
+    <Form/>
+  </section>
+);
 
 export default withStyles(styles)(UserVerification);

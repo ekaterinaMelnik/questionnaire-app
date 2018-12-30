@@ -1,11 +1,13 @@
 import * as React from 'react';
-import connect from 'react-redux/es/connect/connect';
+import { connect } from 'react-redux';
 import { Field, reduxForm, change } from 'redux-form';
-import { CustomSelect as Select } from '../Common/CustomSelect/CustomSelect';
-import { validateUserLocation } from '../../core/validate';
-import { withStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
+
+import { CustomSelect as Select } from '../Common/CustomSelect/CustomSelect';
+import { validateUserLocation } from '../../core/validate';
+
+import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
   textFieldContainer: {
@@ -126,17 +128,16 @@ class LocationForm extends React.Component {
   onChangeCountry = (country, dispatch) => {
     dispatch(change('userLocation', 'city', ''));
 
-    console.log('country', country);
-
     this.setState({
       activeCities: country ? country.cities : []
     });
   };
 
-  onChangeCity = () => {};
+  onChangeCity = () => {
+  };
 
   render() {
-    const { classes, dispatch, initialValues } = this.props;
+    const { classes, dispatch } = this.props;
     const { activeCountries, activeCities } = this.state;
 
     return (

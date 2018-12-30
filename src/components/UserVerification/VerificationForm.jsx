@@ -1,11 +1,13 @@
 import * as React from 'react';
-import connect from 'react-redux/es/connect/connect';
-import { withStyles } from '@material-ui/core/styles';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+
 import Grid from '@material-ui/core/Grid';
-import classNames from 'classnames';
-import { checkImg } from '../../actions';
 import Typography from '@material-ui/core/Typography/Typography';
+import { checkImg } from '../../actions';
+
+import classNames from 'classnames';
+import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
   textFieldContainer: {
@@ -96,7 +98,7 @@ class VerificationForm extends React.Component {
 const mapStateToProps = state => ({
   imagesPaths: state.imagesPaths.images,
   validationError: state.imagesPaths.validationError,
-  checkedImage: state.imagesPaths.checkedImage,
+  checkedImage: state.imagesPaths.checkedImage
 });
 
 const FormConnect = withRouter(withStyles(styles)(connect(mapStateToProps)(VerificationForm)));

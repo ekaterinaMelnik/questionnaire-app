@@ -1,11 +1,12 @@
 import * as React from 'react';
-// import { NavLink } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
-import { withStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { submit } from 'redux-form';
 import { changeLinkStatusBack } from '../../../actions';
+
+import Button from '@material-ui/core/Button';
+
+import { withStyles } from '@material-ui/core/styles';
 
 const styles = {
   defaultLink: {
@@ -97,8 +98,7 @@ class CustomLink extends React.Component {
   };
 
   render() {
-    const { classes, path, title, status, dispatch, index, location, routes } = this.props;
-    console.log('routes', routes);
+    const { classes, path, title, status, dispatch, index, location } = this.props;
 
     return (
       <Button

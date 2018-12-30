@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
-import ChevronLeft from '@material-ui/icons/ChevronLeft';
-import ChevronRight from '@material-ui/icons/ChevronRight';
-import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import { submit, reset } from 'redux-form';
 import { changeLinkStatusBack, clearRoutesPaths, clearUserImage, validateImg } from '../../../actions';
+
+import Button from '@material-ui/core/Button';
+import ChevronLeft from '@material-ui/icons/ChevronLeft';
+import ChevronRight from '@material-ui/icons/ChevronRight';
+
+import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
   root: {
@@ -55,7 +57,8 @@ const styles = theme => ({
 
   textLink: {
     marginTop: 5,
-    marginBottom: 4
+    marginBottom: 4,
+    letterSpacing: 0
   },
 
   verificationLink: {
@@ -227,11 +230,7 @@ class BottomNavigation extends React.Component {
 const mapStateToProps = (state) => ({
   routes: state.routesPaths.routes,
   form: state.form,
-  checkedImage: state.imagesPaths.checkedImage,
-
-  userForm: state.form.userForm.values,
-  userLocation: state.form.userLocation.values,
-  userAccounts: state.form.userAccounts.values
+  checkedImage: state.imagesPaths.checkedImage
 });
 
 const BottomNavigationStyles = withStyles(styles)(BottomNavigation);

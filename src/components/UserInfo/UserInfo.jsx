@@ -1,16 +1,14 @@
 import * as React from 'react';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+
 import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
-import { checkImg } from '../../actions';
-import Grid from '@material-ui/core/Grid/Grid';
-import classNames from 'classnames';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import { withRouter } from 'react-router-dom';
-import connect from 'react-redux/es/connect/connect';
-import { reduxForm } from 'redux-form';
-import { validateUserForm } from '../../core/validate';
+
+import classNames from 'classnames';
+import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
   subTitle: {
@@ -111,7 +109,6 @@ class UserInfo extends React.Component {
       }
     }
 
-    console.log('accounts', accounts);
     this.setState({ accounts });
   };
 

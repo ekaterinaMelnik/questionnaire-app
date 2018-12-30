@@ -1,11 +1,13 @@
 import * as React from 'react';
-import connect from 'react-redux/es/connect/connect';
+import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
+import { withRouter } from 'react-router-dom';
+
+import { validateUserAccounts } from '../../../core/validate';
 import { CustomInput as Input } from '../CustomInput/CustomInput';
 import { CustomCheckbox as Checkbox } from '../CustomCheckbox/CustomCheckbox';
+
 import { withStyles } from '@material-ui/core/styles';
-import { withRouter } from 'react-router-dom';
-import { validateUserAccounts } from '../../../core/validate';
 
 const styles = theme => ({
   textFieldContainer: {

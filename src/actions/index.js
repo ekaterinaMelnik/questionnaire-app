@@ -14,14 +14,6 @@ export const changeLinkStatusBack = (currentPageIndex, nextPageIndex, errors) =>
   errors
 });
 
-export const CHANGE_LINK_STATUS_BACK_ERRORS = 'CHANGE_LINK_STATUS_BACK_ERRORS';
-
-export const changeLinkStatusBackErrors = (currentPageIndex, nextPageIndex) => ({
-  type: CHANGE_LINK_STATUS_BACK_ERRORS,
-  currentPageIndex,
-  nextPageIndex
-});
-
 export const CHECK_IMG = 'CHECK_IMG';
 
 export const checkImg = (checkedImage) => ({

@@ -1,12 +1,11 @@
 import * as React from 'react';
-import { Switch, withRouter, Redirect, Route } from 'react-router-dom';
+import { Switch, withRouter, Redirect } from 'react-router-dom';
 import routes from '../../routes.js';
 import { MainWrapper } from '../Layouts/MainWrapper/MainWrapper';
 import { routesMapper } from '../../core/Utils';
+
 import { withStyles } from '@material-ui/core/styles';
 import '../../styles/_main.scss';
-import UserLocation from '../../components/UserLocation/UserLocation';
-import UserForm from '../../components/UserForm/UserForm';
 
 const styles = {
   root: {

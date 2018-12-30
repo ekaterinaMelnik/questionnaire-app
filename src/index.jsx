@@ -1,10 +1,11 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import App from './components/App/App.jsx';
 import { BrowserRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import rootReducer from './reducers';
 import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+
+import rootReducer from './reducers';
+import App from './components/App/App.jsx';
 
 const store = createStore(rootReducer);
 
