@@ -1,4 +1,4 @@
-import { CHECK_IMG, CLEAR_USER_IMAGE, VALIDATE_IMG } from '../actions';
+import { CHECK_IMG, CLEAR_USER_IMAGE, VALIDATE_IMG } from '../actions/index';
 import cat1 from '../images/cat1.jpg';
 import cat2 from '../images/cat2.jpg';
 import cat3 from '../images/cat3.jpg';

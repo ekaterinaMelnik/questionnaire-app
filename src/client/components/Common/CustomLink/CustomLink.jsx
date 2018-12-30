@@ -2,7 +2,7 @@ import * as React from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { submit } from 'redux-form';
-import { changeLinkStatusBack } from '../../../actions';
+import { changeLinkStatusBack } from '../../../actions/index';
 
 import Button from '@material-ui/core/Button';
 

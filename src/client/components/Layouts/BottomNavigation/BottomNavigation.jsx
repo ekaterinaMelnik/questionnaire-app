@@ -2,7 +2,7 @@ import * as React from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { submit, reset } from 'redux-form';
-import { changeLinkStatusBack, clearRoutesPaths, clearUserImage, validateImg } from '../../../actions';
+import { changeLinkStatusBack, clearRoutesPaths, clearUserImage, validateImg } from '../../../actions/index';
 
 import Button from '@material-ui/core/Button';
 import ChevronLeft from '@material-ui/icons/ChevronLeft';

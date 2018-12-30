@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -102,6 +103,11 @@ const config = {
         collapseWhitespace: true
       },
       hash: true
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'PUBLIC_URL': JSON.stringify('/questionnaire-app')
+      }
     }),
     new UglifyJsPlugin({
       sourceMap: true

@@ -1,4 +1,4 @@
-import { CHANGE_LINK_STATUS_FORWARD, CHANGE_LINK_STATUS_BACK, CLEAR_ROUTES_PATHS, SAVE_NEXT_PAGE } from '../actions';
+import { CHANGE_LINK_STATUS_FORWARD, CHANGE_LINK_STATUS_BACK, CLEAR_ROUTES_PATHS, SAVE_NEXT_PAGE } from '../actions/index';
 
 const initialState = {
   routes: [

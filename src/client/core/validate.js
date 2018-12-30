@@ -1,5 +1,5 @@
 import { SubmissionError } from 'redux-form';
-import { changeLinkStatusForward, changeLinkStatusBack } from '../actions';
+import { changeLinkStatusForward, changeLinkStatusBack } from '../actions/index';
 
 const getRouteInfo = (currentPage) => {
   const routes = ['/', '/location', '/accounts', '/verification'];

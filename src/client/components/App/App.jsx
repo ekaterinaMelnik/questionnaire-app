@@ -43,7 +43,7 @@ class App extends React.Component {
           <MainWrapper>
             <Switch>
               {routesMapper(routes)}
-              <Redirect to="/"/>
+              <Redirect to={process.env.PUBLIC_URL}/>
             </Switch>
           </MainWrapper>
         </div>

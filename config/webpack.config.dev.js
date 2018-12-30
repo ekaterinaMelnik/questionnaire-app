@@ -78,6 +78,11 @@ const config = {
         collapseWhitespace: true
       },
       hash: true
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'PUBLIC_URL': JSON.stringify('')
+      }
     })
   ],
   devServer: {

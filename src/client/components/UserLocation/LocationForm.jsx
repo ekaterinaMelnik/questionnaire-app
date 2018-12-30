@@ -59,7 +59,7 @@ class LocationForm extends React.Component {
   componentDidMount() {
     this._isMounted = true;
 
-    axios.get('/data/countries.json')
+    axios.get(`${process.env.PUBLIC_URL}/data/countries.json`)
       .then(response => response.data)
       .then(countries => {
         if (this._isMounted) {
@@ -67,7 +67,7 @@ class LocationForm extends React.Component {
         }
       })
       .then(() => {
-        axios.get('/data/cities.json')
+        axios.get(`${process.env.PUBLIC_URL}/data/cities.json`)
           .then(response => response.data)
           .then(cities => {
             if (this._isMounted) {
