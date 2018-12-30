@@ -71,6 +71,12 @@ const config = {
         }
       },
       {
+        test: /\.(json)$/,
+        use: {
+          loader: 'file-loader?name=data/[name].[hash:6].[ext]'
+        }
+      },
+      {
         test: /\.(ico)$/,
         loader: 'file-loader?name=[name].[ext]'
       }

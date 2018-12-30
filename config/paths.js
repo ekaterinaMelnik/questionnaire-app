@@ -9,11 +9,13 @@ const MAIN = {
 const ALIASES = {
   config: path.resolve(__dirname, ''),
   actions: path.resolve(__dirname, '../src/actions/'),
-  reducers: path.resolve(__dirname, '../src/reducers/'),
   components: path.resolve(__dirname, '../src/components/'),
+  core: path.resolve(__dirname, '../src/core/'),
+  data: path.resolve(__dirname, '../src/data/'),
+  fonts: path.resolve(__dirname, '../src/fonts/'),
   images: path.resolve(__dirname, '../src/images/'),
-  constants: path.resolve(__dirname, '../src/constants/'),
-  fonts: path.resolve(__dirname, '../src/fonts/')
+  reducers: path.resolve(__dirname, '../src/reducers/'),
+  styles: path.resolve(__dirname, '../src/styles/')
 };
 
 module.exports = {

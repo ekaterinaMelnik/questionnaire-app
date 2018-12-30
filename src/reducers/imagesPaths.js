@@ -1,25 +1,29 @@
 import { CHECK_IMG, CLEAR_USER_IMAGE, VALIDATE_IMG } from '../actions';
+import cat1 from '../images/cat1.jpg';
+import cat2 from '../images/cat2.jpg';
+import cat3 from '../images/cat3.jpg';
+import dog4 from '../images/dog4.jpg';
 
 const initialState = {
   images: [
     {
       id: '1',
-      src: '../../images/cat1.jpg',
+      src: cat1,
       type: 'cat'
     },
     {
       id: '2',
-      src: '../../images/cat2.jpg',
+      src: cat2,
       type: 'cat'
     },
     {
       id: '3',
-      src: '../../images/cat3.jpg',
+      src: cat3,
       type: 'cat'
     },
     {
       id: '4',
-      src: '../../images/dog4.jpg',
+      src: dog4,
       type: 'dog'
     }
   ],
