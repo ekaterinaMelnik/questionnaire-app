@@ -93,7 +93,7 @@ const config = {
       filename: '[name].[hash:6].css'
     }),
     new HtmlWebpackPlugin({
-      title: 'React App title',
+      title: 'Questionnaire app',
       favicon: path.join(src, '/favicon.ico'),
       template: path.join(src, '/index.ejs'),
       version: require('../package.json').version,
